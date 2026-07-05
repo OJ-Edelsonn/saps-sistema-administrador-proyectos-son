@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Criterios de rubrica')}"></head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="app-shell">
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <main class="content">
+        <a class="btn btn-outline-secondary mb-3" th:href="@{/rubricas}">Volver</a>
+        <section class="page-card">
+            <h1 class="h4" th:text="${rubrica.nombre}">Rubrica</h1>
+            <table class="table align-middle">
+                <thead><tr><th>Orden</th><th>Criterio</th><th>Puntaje</th><th>Peso</th></tr></thead>
+                <tbody>
+                <tr th:each="criterio : ${criterios}">
+                    <td th:text="${criterio.orden}">1</td>
+                    <td th:text="${criterio.nombre}">Criterio</td>
+                    <td th:text="${criterio.puntajeMaximo}">20</td>
+                    <td th:text="${criterio.pesoPorcentual + '%'}">10%</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </main>
+</div>
+</body>
+</html>

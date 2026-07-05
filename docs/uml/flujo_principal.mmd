@@ -1,0 +1,9 @@
+flowchart TD
+  A[Registrar proyecto] --> B[Registrar entregable]
+  B --> C[Docente revisa]
+  C --> D{Tiene observaciones?}
+  D -- Si --> E[Registrar observacion]
+  D -- No --> F[Evaluar con rubrica]
+  E --> B
+  F --> G[Calcular nota final]
+  G --> H[Generar reporte]

@@ -1,0 +1,20 @@
+@startuml
+class Curso
+class Docente
+class Estudiante
+class Grupo
+class Proyecto
+class Entregable
+class Observacion
+class Rubrica
+class CriterioEvaluacion
+class Calificacion
+class DetalleCalificacion
+Curso "1" -- "*" Grupo
+Grupo "1" -- "*" Estudiante
+Grupo "1" -- "1" Proyecto
+Proyecto "1" -- "*" Entregable
+Proyecto "1" -- "*" Observacion
+Rubrica "1" -- "*" CriterioEvaluacion
+Calificacion "1" -- "*" DetalleCalificacion
+@enduml

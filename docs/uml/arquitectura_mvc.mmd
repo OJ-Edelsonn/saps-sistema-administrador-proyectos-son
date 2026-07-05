@@ -1,0 +1,7 @@
+flowchart LR
+  Browser[Navegador] --> Controller[Controladores Spring MVC]
+  Controller --> Service[Servicios]
+  Service --> Repository[Repositorios JPA]
+  Repository --> DB[(MySQL saps_db)]
+  Controller --> Thymeleaf[Vistas Thymeleaf]
+  Thymeleaf --> Browser

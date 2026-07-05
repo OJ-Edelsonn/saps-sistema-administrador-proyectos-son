@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('500')}"></head>
+<body class="p-5">
+<main class="page-card mx-auto" style="max-width:720px">
+    <h1>500</h1>
+    <p>Ocurrio un error interno al procesar la solicitud.</p>
+    <a class="btn btn-primary" th:href="@{/dashboard}">Ir al dashboard</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+            <html lang="es" xmlns:th="http://www.thymeleaf.org">
+            <head th:replace="~{fragments/header :: head(${moduleTitle})}"></head>
+            <body>
+            <div th:replace="~{fragments/navbar :: navbar}"></div>
+            <div class="app-shell">
+                <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+                <main class="content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h1 class="h3 fw-bold mb-0" th:text="${moduleTitle}">Formulario</h1>
+                        <a class="btn btn-outline-secondary" th:href="@{/estudiantes}">Volver</a>
+                    </div>
+                    <form class="page-card" th:action="@{/estudiantes/guardar}" th:object="${item}" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Codigo universitario</label>
+                    <input class="form-control" type="text" th:field="*{codigoUniversitario}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('codigoUniversitario')}" th:errors="*{codigoUniversitario}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Nombres</label>
+                    <input class="form-control" type="text" th:field="*{nombres}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Apellidos</label>
+                    <input class="form-control" type="text" th:field="*{apellidos}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Correo</label>
+                    <input class="form-control" type="email" th:field="*{correo}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Carrera</label>
+                    <input class="form-control" type="text" th:field="*{carrera}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('carrera')}" th:errors="*{carrera}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Ciclo</label>
+                    <input class="form-control" type="number" th:field="*{ciclo}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('ciclo')}" th:errors="*{ciclo}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Grupo</label>
+                    <select class="form-select" th:field="*{grupo}">
+    <option value="">Seleccione...</option>
+    <option th:each="option : ${grupos}" th:value="${option.id}" th:text="${option.nombre}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('grupo')}" th:errors="*{grupo}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select" th:field="*{estado}">
+    <option th:each="option : ${estados}" th:value="${option}" th:text="${option}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+                </div>
+
+                        </div>
+                        <div class="mt-4 d-flex gap-2">
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <a class="btn btn-outline-secondary" th:href="@{/estudiantes}">Cancelar</a>
+                        </div>
+                    </form>
+                    <div th:replace="~{fragments/footer :: footer}"></div>
+                </main>
+            </div>
+            </body>
+            </html>

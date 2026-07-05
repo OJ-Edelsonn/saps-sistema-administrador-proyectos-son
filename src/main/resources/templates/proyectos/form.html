@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+            <html lang="es" xmlns:th="http://www.thymeleaf.org">
+            <head th:replace="~{fragments/header :: head(${moduleTitle})}"></head>
+            <body>
+            <div th:replace="~{fragments/navbar :: navbar}"></div>
+            <div class="app-shell">
+                <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+                <main class="content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h1 class="h3 fw-bold mb-0" th:text="${moduleTitle}">Formulario</h1>
+                        <a class="btn btn-outline-secondary" th:href="@{/proyectos}">Volver</a>
+                    </div>
+                    <form class="page-card" th:action="@{/proyectos/guardar}" th:object="${item}" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Titulo</label>
+                    <input class="form-control" type="text" th:field="*{titulo}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Descripcion</label>
+                    <textarea class="form-control" rows="3" th:field="*{descripcion}"></textarea>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Problema identificado</label>
+                    <textarea class="form-control" rows="3" th:field="*{problemaIdentificado}"></textarea>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('problemaIdentificado')}" th:errors="*{problemaIdentificado}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Objetivo general</label>
+                    <textarea class="form-control" rows="3" th:field="*{objetivoGeneral}"></textarea>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('objetivoGeneral')}" th:errors="*{objetivoGeneral}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Objetivos especificos</label>
+                    <textarea class="form-control" rows="3" th:field="*{objetivosEspecificos}"></textarea>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('objetivosEspecificos')}" th:errors="*{objetivosEspecificos}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Linea tematica</label>
+                    <input class="form-control" type="text" th:field="*{lineaTematica}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('lineaTematica')}" th:errors="*{lineaTematica}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Curso</label>
+                    <select class="form-select" th:field="*{curso}">
+    <option value="">Seleccione...</option>
+    <option th:each="option : ${cursos}" th:value="${option.id}" th:text="${option.nombre}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Grupo</label>
+                    <select class="form-select" th:field="*{grupo}">
+    <option value="">Seleccione...</option>
+    <option th:each="option : ${grupos}" th:value="${option.id}" th:text="${option.nombre}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('grupo')}" th:errors="*{grupo}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Docente asesor</label>
+                    <select class="form-select" th:field="*{docenteAsesor}">
+    <option value="">Seleccione...</option>
+    <option th:each="option : ${docentes}" th:value="${option.id}" th:text="${option.apellidos}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('docenteAsesor')}" th:errors="*{docenteAsesor}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Fecha de inicio</label>
+                    <input class="form-control" type="date" th:field="*{fechaInicio}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Fecha estimada de entrega</label>
+                    <input class="form-control" type="date" th:field="*{fechaEstimadaEntrega}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('fechaEstimadaEntrega')}" th:errors="*{fechaEstimadaEntrega}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select" th:field="*{estado}">
+    <option th:each="option : ${estadosProyecto}" th:value="${option}" th:text="${option}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+                </div>
+
+                        </div>
+                        <div class="mt-4 d-flex gap-2">
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <a class="btn btn-outline-secondary" th:href="@{/proyectos}">Cancelar</a>
+                        </div>
+                    </form>
+                    <div th:replace="~{fragments/footer :: footer}"></div>
+                </main>
+            </div>
+            </body>
+            </html>

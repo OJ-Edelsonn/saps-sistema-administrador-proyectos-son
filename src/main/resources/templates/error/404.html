@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('404')}"></head>
+<body class="p-5">
+<main class="page-card mx-auto" style="max-width:720px">
+    <h1>404</h1>
+    <p>La pagina solicitada no fue encontrada.</p>
+    <a class="btn btn-primary" th:href="@{/dashboard}">Ir al dashboard</a>
+</main>
+</body>
+</html>

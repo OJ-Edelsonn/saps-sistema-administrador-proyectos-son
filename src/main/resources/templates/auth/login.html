@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Login')}"></head>
+<body class="login-page">
+<main class="login-panel">
+    <div class="mb-4">
+        <h1 class="h3 fw-bold mb-1">S.A.P.S</h1>
+        <p class="text-muted mb-0">Sistema Administrador de Proyectos Son</p>
+    </div>
+    <div class="alert alert-danger" th:if="${param.error}">Credenciales incorrectas.</div>
+    <div class="alert alert-success" th:if="${param.logout}">Sesion cerrada correctamente.</div>
+    <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+            <label class="form-label" for="username">Usuario</label>
+            <input class="form-control" id="username" name="username" autocomplete="username" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password">Contrasena</label>
+            <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Ingresar</button>
+    </form>
+    <div class="small text-muted mt-4">
+        admin/admin123 · docente/docente123 · estudiante/estudiante123
+    </div>
+</main>
+</body>
+</html>

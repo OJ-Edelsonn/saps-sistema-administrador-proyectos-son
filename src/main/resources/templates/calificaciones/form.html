@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+            <html lang="es" xmlns:th="http://www.thymeleaf.org">
+            <head th:replace="~{fragments/header :: head(${moduleTitle})}"></head>
+            <body>
+            <div th:replace="~{fragments/navbar :: navbar}"></div>
+            <div class="app-shell">
+                <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+                <main class="content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h1 class="h3 fw-bold mb-0" th:text="${moduleTitle}">Formulario</h1>
+                        <a class="btn btn-outline-secondary" th:href="@{/calificaciones}">Volver</a>
+                    </div>
+                    <form class="page-card" th:action="@{/calificaciones/guardar}" th:object="${item}" method="post">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Proyecto</label>
+                    <select class="form-select" th:field="*{proyecto}">
+    <option value="">Seleccione...</option>
+    <option th:each="option : ${proyectos}" th:value="${option.id}" th:text="${option.titulo}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('proyecto')}" th:errors="*{proyecto}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Rubrica</label>
+                    <select class="form-select" th:field="*{rubrica}">
+    <option value="">Seleccione...</option>
+    <option th:each="option : ${rubricas}" th:value="${option.id}" th:text="${option.nombre}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('rubrica')}" th:errors="*{rubrica}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Docente evaluador</label>
+                    <select class="form-select" th:field="*{docenteEvaluador}">
+    <option value="">Seleccione...</option>
+    <option th:each="option : ${docentes}" th:value="${option.id}" th:text="${option.apellidos}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('docenteEvaluador')}" th:errors="*{docenteEvaluador}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Fecha evaluacion</label>
+                    <input class="form-control" type="date" th:field="*{fechaEvaluacion}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('fechaEvaluacion')}" th:errors="*{fechaEvaluacion}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Nota final</label>
+                    <input class="form-control" type="number" step="0.01" th:field="*{notaFinal}">
+                    <div class="text-danger small" th:if="${#fields.hasErrors('notaFinal')}" th:errors="*{notaFinal}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Comentario general</label>
+                    <textarea class="form-control" rows="3" th:field="*{comentarioGeneral}"></textarea>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('comentarioGeneral')}" th:errors="*{comentarioGeneral}"></div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select" th:field="*{estado}">
+    <option th:each="option : ${estadosProyecto}" th:value="${option}" th:text="${option}">Opcion</option>
+</select>
+                    <div class="text-danger small" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></div>
+                </div>
+
+                        </div>
+                        <div class="mt-4 d-flex gap-2">
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                            <a class="btn btn-outline-secondary" th:href="@{/calificaciones}">Cancelar</a>
+                        </div>
+                    </form>
+                    <div th:replace="~{fragments/footer :: footer}"></div>
+                </main>
+            </div>
+            </body>
+            </html>

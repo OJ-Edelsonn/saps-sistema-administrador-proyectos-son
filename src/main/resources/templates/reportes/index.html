@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Reportes')}"></head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="app-shell">
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <main class="content">
+        <h1 class="h3 fw-bold mb-3">Reportes</h1>
+        <section class="page-card mb-3">
+            <h2 class="h5">Reporte general del sistema</h2>
+            <div class="row g-3">
+                <div class="col-md-4"><strong>Cursos:</strong> <span th:text="${#lists.size(reporte.cursos)}">0</span></div>
+                <div class="col-md-4"><strong>Grupos:</strong> <span th:text="${#lists.size(reporte.grupos)}">0</span></div>
+                <div class="col-md-4"><strong>Proyectos:</strong> <span th:text="${#lists.size(reporte.proyectos)}">0</span></div>
+                <div class="col-md-4"><strong>Entregables:</strong> <span th:text="${#lists.size(reporte.entregables)}">0</span></div>
+                <div class="col-md-4"><strong>Observaciones:</strong> <span th:text="${#lists.size(reporte.observaciones)}">0</span></div>
+                <div class="col-md-4"><strong>Calificaciones:</strong> <span th:text="${#lists.size(reporte.calificaciones)}">0</span></div>
+            </div>
+        </section>
+        <section class="page-card">
+            <h2 class="h5">Proyectos por estado</h2>
+            <table class="table table-sm">
+                <thead><tr><th>Proyecto</th><th>Curso</th><th>Estado</th></tr></thead>
+                <tbody>
+                <tr th:each="proyecto : ${reporte.proyectos}">
+                    <td th:text="${proyecto.titulo}">Proyecto</td>
+                    <td th:text="${proyecto.curso != null ? proyecto.curso.nombre : '-'}">Curso</td>
+                    <td th:text="${proyecto.estado}">Estado</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+target/
+*.log
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.factorypath
+nbproject/private/
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Runtime/local
+*.pid
+*.seed
+uploads/

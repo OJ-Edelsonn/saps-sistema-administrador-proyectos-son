@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Ficha de calificacion')}"></head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="app-shell">
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <main class="content">
+        <a class="btn btn-outline-secondary mb-3" th:href="@{/calificaciones}">Volver</a>
+        <section class="page-card">
+            <h1 class="h4">Ficha de calificacion</h1>
+            <p><strong>Proyecto:</strong> <span th:text="${item.proyecto != null ? item.proyecto.titulo : '-'}"></span></p>
+            <p><strong>Rubrica:</strong> <span th:text="${item.rubrica != null ? item.rubrica.nombre : '-'}"></span></p>
+            <p><strong>Nota final:</strong> <span class="badge text-bg-primary" th:text="${item.notaFinal}"></span></p>
+            <p th:text="${item.comentarioGeneral}">Comentario</p>
+        </section>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </main>
+</div>
+</body>
+</html>

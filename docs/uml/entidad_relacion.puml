@@ -1,0 +1,19 @@
+@startuml
+entity cursos
+entity docentes
+entity estudiantes
+entity grupos
+entity proyectos
+entity entregables
+entity observaciones
+entity rubricas
+entity criterios_evaluacion
+entity calificaciones
+cursos ||--o{ grupos
+grupos ||--o{ estudiantes
+grupos ||--|| proyectos
+proyectos ||--o{ entregables
+proyectos ||--o{ observaciones
+rubricas ||--o{ criterios_evaluacion
+calificaciones ||--o{ detalle_calificaciones
+@enduml

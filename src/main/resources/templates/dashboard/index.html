@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Dashboard')}"></head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="app-shell">
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <main class="content">
+        <h1 class="h3 fw-bold mb-3">Dashboard</h1>
+        <div class="row g-3 mb-4">
+            <div class="col-md-3" th:each="stat : ${resumen}">
+                <div class="stat-card" th:if="${#strings.startsWith(stat.key, 'total') or stat.key == 'proyectosEnDesarrollo' or stat.key == 'proyectosObservados' or stat.key == 'proyectosAprobados' or stat.key == 'entregablesPendientes' or stat.key == 'observacionesCriticas' or stat.key == 'promedioGeneral'}">
+                    <span class="text-muted small" th:text="${stat.key}">Metrica</span>
+                    <strong th:text="${stat.value}">0</strong>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <section class="col-lg-6">
+                <div class="page-card">
+                    <h2 class="h5">Ultimos proyectos registrados</h2>
+                    <table class="table table-sm align-middle">
+                        <tbody>
+                        <tr th:each="proyecto : ${resumen.ultimosProyectos}">
+                            <td th:text="${proyecto.titulo}">Proyecto</td>
+                            <td><span class="badge text-bg-secondary" th:text="${proyecto.estado}">Estado</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section class="col-lg-6">
+                <div class="page-card">
+                    <h2 class="h5">Proximos entregables</h2>
+                    <table class="table table-sm align-middle">
+                        <tbody>
+                        <tr th:each="entregable : ${resumen.proximosEntregables}">
+                            <td th:text="${entregable.nombre}">Entregable</td>
+                            <td th:text="${entregable.fechaLimite}">Fecha</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </main>
+</div>
+</body>
+</html>

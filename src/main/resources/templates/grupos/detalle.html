@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Detalle de grupo')}"></head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="app-shell">
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <main class="content">
+        <a class="btn btn-outline-secondary mb-3" th:href="@{/grupos}">Volver</a>
+        <section class="page-card">
+            <h1 class="h4" th:text="${item.nombre}">Grupo</h1>
+            <p class="text-muted" th:text="${item.codigoGrupo}">Codigo</p>
+            <h2 class="h5">Integrantes</h2>
+            <ul class="list-group">
+                <li class="list-group-item" th:each="estudiante : ${item.estudiantes}" th:text="${estudiante.nombres + ' ' + estudiante.apellidos}">Integrante</li>
+            </ul>
+        </section>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </main>
+</div>
+</body>
+</html>

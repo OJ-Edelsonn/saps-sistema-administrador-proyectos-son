@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+actor Administrador
+actor Docente
+actor Estudiante
+rectangle S.A.P.S {
+  Administrador --> (Gestionar usuarios)
+  Administrador --> (Gestionar cursos)
+  Docente --> (Registrar observaciones)
+  Docente --> (Evaluar con rubrica)
+  Estudiante --> (Consultar proyecto)
+  Estudiante --> (Registrar entregable)
+  (Evaluar con rubrica) --> (Calcular nota final)
+}
+@enduml

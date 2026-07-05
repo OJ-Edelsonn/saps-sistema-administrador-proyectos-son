@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Detalle de proyecto')}"></head>
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="app-shell">
+    <div th:replace="~{fragments/sidebar :: sidebar}"></div>
+    <main class="content">
+        <a class="btn btn-outline-secondary mb-3" th:href="@{/proyectos}">Volver</a>
+        <section class="page-card">
+            <h1 class="h4" th:text="${item.titulo}">Proyecto</h1>
+            <p th:text="${item.descripcion}">Descripcion</p>
+            <div class="row g-3">
+                <div class="col-md-6"><strong>Curso:</strong> <span th:text="${item.curso != null ? item.curso.nombre : '-'}"></span></div>
+                <div class="col-md-6"><strong>Grupo:</strong> <span th:text="${item.grupo != null ? item.grupo.nombre : '-'}"></span></div>
+                <div class="col-md-6"><strong>Estado:</strong> <span class="badge text-bg-secondary" th:text="${item.estado}"></span></div>
+                <div class="col-md-6"><strong>Entrega estimada:</strong> <span th:text="${item.fechaEstimadaEntrega}"></span></div>
+            </div>
+            <h2 class="h5 mt-4">Entregables</h2>
+            <table class="table table-sm">
+                <tr th:each="entregable : ${item.entregables}">
+                    <td th:text="${entregable.nombre}">Entregable</td>
+                    <td th:text="${entregable.estado}">Estado</td>
+                </tr>
+            </table>
+        </section>
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </main>
+</div>
+</body>
+</html>
