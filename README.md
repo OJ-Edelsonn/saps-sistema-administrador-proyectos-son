@@ -22,6 +22,19 @@ Aplicacion web academica desarrollada con Java 17, Spring Boot 3, Spring MVC, Th
 7. Ejecutar `SapsApplication.java` como Spring Boot App.
 8. Abrir `http://localhost:8080`.
 
+### Nota importante para NetBeans
+
+Cuando ejecutes el proyecto desde NetBeans, la pestaña `Run (SapsApplication)` no se cierra sola porque Spring Boot levanta un servidor web permanente. Eso es normal.
+
+El sistema ya esta listo cuando en la consola aparezca:
+
+```text
+S.A.P.S LISTO
+Abrir: http://localhost:8080
+```
+
+En ese momento abre el navegador y entra a `http://localhost:8080`. Para detener el sistema usa el boton rojo `Stop` de NetBeans.
+
 ## Usuarios de prueba
 
 - Administrador: `admin` / `admin123`
