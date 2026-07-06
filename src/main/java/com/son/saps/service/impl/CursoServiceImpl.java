@@ -10,17 +10,17 @@ import org.springframework.util.StringUtils;
 @Service
 public class CursoServiceImpl extends GenericCrudServiceImpl<Curso> implements CursoService {
 
-    private final CursoRepository repository;
+  private final CursoRepository repository;
 
-    public CursoServiceImpl(CursoRepository repository) {
-        super(repository);
-        this.repository = repository;
-    }
+  public CursoServiceImpl(CursoRepository repository) {
+    super(repository);
+    this.repository = repository;
+  }
 
-    @Override
-    public List<Curso> buscar(String texto) {
-        return StringUtils.hasText(texto) ? repository.findByNombreContainingIgnoreCaseOrCodigoContainingIgnoreCase(texto, texto) : repository.findAll();
-    }
-
-
+  @Override
+  public List<Curso> buscar(String texto) {
+    return StringUtils.hasText(texto)
+        ? repository.findByNombreContainingIgnoreCaseOrCodigoContainingIgnoreCase(texto, texto)
+        : repository.findAll();
+  }
 }

@@ -2,7 +2,7 @@
 
 Aplicacion web academica desarrollada con Java 17, Spring Boot 3, Spring MVC, Thymeleaf, Spring Data JPA, Spring Security, MySQL, Maven y Bootstrap 5.
 
-## Requisitos previos
+## Requisitos Previos
 
 - Windows.
 - Java 17.
@@ -11,20 +11,28 @@ Aplicacion web academica desarrollada con Java 17, Spring Boot 3, Spring MVC, Th
 - MySQL Workbench.
 - NetBeans o Spring Tools for Eclipse.
 
-## Ejecucion con XAMPP
+## Ejecucion Con XAMPP
 
 1. Abrir XAMPP.
 2. Activar manualmente Apache y MySQL.
 3. Abrir MySQL Workbench.
-4. Crear la base de datos `saps_db` o ejecutar `database/saps_db.sql`.
+4. Crear la base de datos `saps_db`.
 5. Abrir el proyecto Maven `saps` en NetBeans o Spring Tools for Eclipse.
 6. Verificar `src/main/resources/application.properties`.
 7. Ejecutar `SapsApplication.java` como Spring Boot App.
 8. Abrir `http://localhost:8080`.
 
-### Nota importante para NetBeans
+SQL recomendado para la primera ejecucion:
 
-Cuando ejecutes el proyecto desde NetBeans, la pestaña `Run (SapsApplication)` no se cierra sola porque Spring Boot levanta un servidor web permanente. Eso es normal.
+```sql
+CREATE DATABASE saps_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+La aplicacion crea las tablas con JPA/Hibernate al iniciar. Los scripts de la carpeta `database` se conservan como respaldo y datos de apoyo para pruebas.
+
+## Nota Para NetBeans
+
+Cuando ejecutes el proyecto desde NetBeans, la pestana `Run (SapsApplication)` no se cierra sola porque Spring Boot levanta un servidor web permanente. Eso es normal.
 
 Este proyecto incluye `nbactions.xml` para que S.A.P.S se ejecute con JDK 17 desde NetBeans sin cambiar el JDK global del IDE ni afectar otros proyectos.
 
@@ -37,17 +45,17 @@ Abrir: http://localhost:8080
 
 En ese momento abre el navegador y entra a `http://localhost:8080`. Para detener el sistema usa el boton rojo `Stop` de NetBeans.
 
-## Usuarios de prueba
+## Usuarios De Prueba
 
 - Administrador: `admin` / `admin123`
 - Docente: `docente` / `docente123`
 - Estudiante: `estudiante` / `estudiante123`
 
-## Validacion realizada
+## Validacion
 
-- Compilacion Maven ejecutada con Java 17: `mvn -DskipTests package`.
-- La prueba funcional completa requiere activar manualmente Apache y MySQL desde XAMPP antes de ejecutar `SapsApplication.java`.
-- El informe Word fue generado en `docs/Informe_SAPS.docx`. La revision visual por render no se completo en este entorno porque LibreOffice/`soffice` no esta instalado en PATH.
+- Compilacion Maven ejecutada con Java 17.
+- Prueba funcional con XAMPP, MySQL local y acceso a `http://localhost:8080`.
+- Verificacion de login, dashboard, estructura de tablas y carga inicial de datos.
 
 ## Modulos
 
@@ -62,6 +70,7 @@ Usuarios, cursos, docentes, estudiantes, grupos, proyectos integradores, entrega
 - `src/main/resources/templates`: vistas Thymeleaf.
 - `database`: scripts SQL.
 - `docs`: documentacion tecnica, manuales y UML.
+- `nbactions.xml`: configuracion local de NetBeans para ejecutar S.A.P.S con JDK 17.
 
 ## Autor
 

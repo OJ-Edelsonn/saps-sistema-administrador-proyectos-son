@@ -10,17 +10,19 @@ import org.springframework.util.StringUtils;
 @Service
 public class DocenteServiceImpl extends GenericCrudServiceImpl<Docente> implements DocenteService {
 
-    private final DocenteRepository repository;
+  private final DocenteRepository repository;
 
-    public DocenteServiceImpl(DocenteRepository repository) {
-        super(repository);
-        this.repository = repository;
-    }
+  public DocenteServiceImpl(DocenteRepository repository) {
+    super(repository);
+    this.repository = repository;
+  }
 
-    @Override
-    public List<Docente> buscar(String texto) {
-        return StringUtils.hasText(texto) ? repository.findByNombresContainingIgnoreCaseOrApellidosContainingIgnoreCaseOrCorreoContainingIgnoreCase(texto, texto, texto) : repository.findAll();
-    }
-
-
+  @Override
+  public List<Docente> buscar(String texto) {
+    return StringUtils.hasText(texto)
+        ? repository
+            .findByNombresContainingIgnoreCaseOrApellidosContainingIgnoreCaseOrCorreoContainingIgnoreCase(
+                texto, texto, texto)
+        : repository.findAll();
+  }
 }

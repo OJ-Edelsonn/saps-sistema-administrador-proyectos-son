@@ -8,19 +8,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class EstudianteServiceImpl extends GenericCrudServiceImpl<Estudiante> implements EstudianteService {
+public class EstudianteServiceImpl extends GenericCrudServiceImpl<Estudiante>
+    implements EstudianteService {
 
-    private final EstudianteRepository repository;
+  private final EstudianteRepository repository;
 
-    public EstudianteServiceImpl(EstudianteRepository repository) {
-        super(repository);
-        this.repository = repository;
-    }
+  public EstudianteServiceImpl(EstudianteRepository repository) {
+    super(repository);
+    this.repository = repository;
+  }
 
-    @Override
-    public List<Estudiante> buscar(String texto) {
-        return StringUtils.hasText(texto) ? repository.findByNombresContainingIgnoreCaseOrApellidosContainingIgnoreCaseOrCodigoUniversitarioContainingIgnoreCase(texto, texto, texto) : repository.findAll();
-    }
-
-
+  @Override
+  public List<Estudiante> buscar(String texto) {
+    return StringUtils.hasText(texto)
+        ? repository
+            .findByNombresContainingIgnoreCaseOrApellidosContainingIgnoreCaseOrCodigoUniversitarioContainingIgnoreCase(
+                texto, texto, texto)
+        : repository.findAll();
+  }
 }

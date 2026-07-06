@@ -10,17 +10,17 @@ import org.springframework.util.StringUtils;
 @Service
 public class RubricaServiceImpl extends GenericCrudServiceImpl<Rubrica> implements RubricaService {
 
-    private final RubricaRepository repository;
+  private final RubricaRepository repository;
 
-    public RubricaServiceImpl(RubricaRepository repository) {
-        super(repository);
-        this.repository = repository;
-    }
+  public RubricaServiceImpl(RubricaRepository repository) {
+    super(repository);
+    this.repository = repository;
+  }
 
-    @Override
-    public List<Rubrica> buscar(String texto) {
-        return StringUtils.hasText(texto) ? repository.findByNombreContainingIgnoreCase(texto) : repository.findAll();
-    }
-
-
+  @Override
+  public List<Rubrica> buscar(String texto) {
+    return StringUtils.hasText(texto)
+        ? repository.findByNombreContainingIgnoreCase(texto)
+        : repository.findAll();
+  }
 }

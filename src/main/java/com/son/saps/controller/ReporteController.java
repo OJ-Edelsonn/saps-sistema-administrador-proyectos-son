@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/reportes")
 public class ReporteController {
 
-    private final ReporteService reporteService;
+  private final ReporteService reporteService;
 
-    public ReporteController(ReporteService reporteService) {
-        this.reporteService = reporteService;
-    }
+  public ReporteController(ReporteService reporteService) {
+    this.reporteService = reporteService;
+  }
 
-    @GetMapping
-    public String index(Model model) {
-        model.addAttribute("reporte", reporteService.obtenerReporteGeneral());
-        return "reportes/index";
-    }
+  @GetMapping
+  public String index(Model model) {
+    model.addAttribute("reporte", reporteService.obtenerReporteGeneral());
+    return "reportes/index";
+  }
 }

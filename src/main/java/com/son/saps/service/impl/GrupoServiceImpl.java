@@ -10,17 +10,17 @@ import org.springframework.util.StringUtils;
 @Service
 public class GrupoServiceImpl extends GenericCrudServiceImpl<Grupo> implements GrupoService {
 
-    private final GrupoRepository repository;
+  private final GrupoRepository repository;
 
-    public GrupoServiceImpl(GrupoRepository repository) {
-        super(repository);
-        this.repository = repository;
-    }
+  public GrupoServiceImpl(GrupoRepository repository) {
+    super(repository);
+    this.repository = repository;
+  }
 
-    @Override
-    public List<Grupo> buscar(String texto) {
-        return StringUtils.hasText(texto) ? repository.findByNombreContainingIgnoreCaseOrCodigoGrupoContainingIgnoreCase(texto, texto) : repository.findAll();
-    }
-
-
+  @Override
+  public List<Grupo> buscar(String texto) {
+    return StringUtils.hasText(texto)
+        ? repository.findByNombreContainingIgnoreCaseOrCodigoGrupoContainingIgnoreCase(texto, texto)
+        : repository.findAll();
+  }
 }

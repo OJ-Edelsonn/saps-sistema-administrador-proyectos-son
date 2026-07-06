@@ -8,19 +8,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class ObservacionServiceImpl extends GenericCrudServiceImpl<Observacion> implements ObservacionService {
+public class ObservacionServiceImpl extends GenericCrudServiceImpl<Observacion>
+    implements ObservacionService {
 
-    private final ObservacionRepository repository;
+  private final ObservacionRepository repository;
 
-    public ObservacionServiceImpl(ObservacionRepository repository) {
-        super(repository);
-        this.repository = repository;
-    }
+  public ObservacionServiceImpl(ObservacionRepository repository) {
+    super(repository);
+    this.repository = repository;
+  }
 
-    @Override
-    public List<Observacion> buscar(String texto) {
-        return StringUtils.hasText(texto) ? repository.findByComentarioContainingIgnoreCase(texto) : repository.findAll();
-    }
-
-
+  @Override
+  public List<Observacion> buscar(String texto) {
+    return StringUtils.hasText(texto)
+        ? repository.findByComentarioContainingIgnoreCase(texto)
+        : repository.findAll();
+  }
 }

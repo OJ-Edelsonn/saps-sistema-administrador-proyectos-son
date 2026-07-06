@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/dashboard")
 public class DashboardController {
 
-    private final DashboardService dashboardService;
+  private final DashboardService dashboardService;
 
-    public DashboardController(DashboardService dashboardService) {
-        this.dashboardService = dashboardService;
-    }
+  public DashboardController(DashboardService dashboardService) {
+    this.dashboardService = dashboardService;
+  }
 
-    @GetMapping
-    public String index(Model model) {
-        model.addAttribute("resumen", dashboardService.obtenerResumen());
-        return "dashboard/index";
-    }
+  @GetMapping
+  public String index(Model model) {
+    model.addAttribute("resumen", dashboardService.obtenerResumen());
+    return "dashboard/index";
+  }
 }

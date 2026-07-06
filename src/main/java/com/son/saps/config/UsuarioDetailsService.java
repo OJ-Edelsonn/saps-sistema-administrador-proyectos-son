@@ -12,17 +12,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsuarioDetailsService implements UserDetailsService {
 
-    private final UsuarioRepository usuarioRepository;
+  private final UsuarioRepository usuarioRepository;
 
-    public UsuarioDetailsService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
+  public UsuarioDetailsService(UsuarioRepository usuarioRepository) {
+    this.usuarioRepository = usuarioRepository;
+  }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
-        String rol = "ROLE_" + usuario.getRol().getNombre().name();
-        return new User(usuario.getUsername(), usuario.getPassword(), java.util.List.of(new SimpleGrantedAuthority(rol)));
-    }
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    Usuario usuario =
+        usuarioRepository
+            .findByUsername(username)
+            .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado: " + username));
+    String rol = "ROLE_" + usuario.getRol().getNombre().name();
+    return new User(
+        usuario.getUsername(),
+        usuario.getPassword(),
+        java.util.List.of(new SimpleGrantedAuthority(rol)));
+  }
 }

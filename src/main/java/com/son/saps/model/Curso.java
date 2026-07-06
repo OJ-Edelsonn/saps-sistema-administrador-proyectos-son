@@ -1,6 +1,6 @@
 package com.son.saps.model;
 
-        import com.son.saps.model.enums.EstadoGeneral;
+import com.son.saps.model.enums.EstadoGeneral;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,126 +16,122 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-        @Entity
+@Entity
 @Table(name = "cursos")
-        public class Curso {
+public class Curso {
 
-            @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotBlank
-    @Column(nullable = false, unique = true, length = 20)
-    private String codigo;
-    @NotBlank
-    @Column(nullable = false, length = 120)
-    private String nombre;
-    @NotNull
-    @Min(1)
-    private Integer ciclo;
-    @NotNull
-    @Min(1)
-    private Integer creditos;
-    @Column(length = 1000)
-    private String descripcion;
-    @Enumerated(EnumType.STRING)
-    private EstadoGeneral estado = EstadoGeneral.ACTIVO;
-    @OneToMany(mappedBy = "curso")
-    private List<Grupo> grupos = new ArrayList<>();
-    @OneToMany(mappedBy = "curso")
-    private List<Rubrica> rubricas = new ArrayList<>();
-    @OneToMany(mappedBy = "curso")
-    private List<Proyecto> proyectos = new ArrayList<>();
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
+  @NotBlank
+  @Column(nullable = false, unique = true, length = 20)
+  private String codigo;
 
+  @NotBlank
+  @Column(nullable = false, length = 120)
+  private String nombre;
 
+  @NotNull
+  @Min(1)
+  private Integer ciclo;
 
-    public Long getId() {
-        return id;
-    }
+  @NotNull
+  @Min(1)
+  private Integer creditos;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @Column(length = 1000)
+  private String descripcion;
 
+  @Enumerated(EnumType.STRING)
+  private EstadoGeneral estado = EstadoGeneral.ACTIVO;
 
-    public String getCodigo() {
-        return codigo;
-    }
+  @OneToMany(mappedBy = "curso")
+  private List<Grupo> grupos = new ArrayList<>();
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+  @OneToMany(mappedBy = "curso")
+  private List<Rubrica> rubricas = new ArrayList<>();
 
+  @OneToMany(mappedBy = "curso")
+  private List<Proyecto> proyectos = new ArrayList<>();
 
-    public String getNombre() {
-        return nombre;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
+  public String getCodigo() {
+    return codigo;
+  }
 
-    public Integer getCiclo() {
-        return ciclo;
-    }
+  public void setCodigo(String codigo) {
+    this.codigo = codigo;
+  }
 
-    public void setCiclo(Integer ciclo) {
-        this.ciclo = ciclo;
-    }
+  public String getNombre() {
+    return nombre;
+  }
 
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
 
-    public Integer getCreditos() {
-        return creditos;
-    }
+  public Integer getCiclo() {
+    return ciclo;
+  }
 
-    public void setCreditos(Integer creditos) {
-        this.creditos = creditos;
-    }
+  public void setCiclo(Integer ciclo) {
+    this.ciclo = ciclo;
+  }
 
+  public Integer getCreditos() {
+    return creditos;
+  }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+  public void setCreditos(Integer creditos) {
+    this.creditos = creditos;
+  }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+  public String getDescripcion() {
+    return descripcion;
+  }
 
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
-    public EstadoGeneral getEstado() {
-        return estado;
-    }
+  public EstadoGeneral getEstado() {
+    return estado;
+  }
 
-    public void setEstado(EstadoGeneral estado) {
-        this.estado = estado;
-    }
+  public void setEstado(EstadoGeneral estado) {
+    this.estado = estado;
+  }
 
+  public List<Grupo> getGrupos() {
+    return grupos;
+  }
 
-    public List<Grupo> getGrupos() {
-        return grupos;
-    }
+  public void setGrupos(List<Grupo> grupos) {
+    this.grupos = grupos;
+  }
 
-    public void setGrupos(List<Grupo> grupos) {
-        this.grupos = grupos;
-    }
+  public List<Rubrica> getRubricas() {
+    return rubricas;
+  }
 
+  public void setRubricas(List<Rubrica> rubricas) {
+    this.rubricas = rubricas;
+  }
 
-    public List<Rubrica> getRubricas() {
-        return rubricas;
-    }
+  public List<Proyecto> getProyectos() {
+    return proyectos;
+  }
 
-    public void setRubricas(List<Rubrica> rubricas) {
-        this.rubricas = rubricas;
-    }
-
-
-    public List<Proyecto> getProyectos() {
-        return proyectos;
-    }
-
-    public void setProyectos(List<Proyecto> proyectos) {
-        this.proyectos = proyectos;
-    }
-
-        }
+  public void setProyectos(List<Proyecto> proyectos) {
+    this.proyectos = proyectos;
+  }
+}

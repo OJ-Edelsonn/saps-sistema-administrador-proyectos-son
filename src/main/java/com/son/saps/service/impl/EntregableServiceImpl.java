@@ -8,19 +8,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class EntregableServiceImpl extends GenericCrudServiceImpl<Entregable> implements EntregableService {
+public class EntregableServiceImpl extends GenericCrudServiceImpl<Entregable>
+    implements EntregableService {
 
-    private final EntregableRepository repository;
+  private final EntregableRepository repository;
 
-    public EntregableServiceImpl(EntregableRepository repository) {
-        super(repository);
-        this.repository = repository;
-    }
+  public EntregableServiceImpl(EntregableRepository repository) {
+    super(repository);
+    this.repository = repository;
+  }
 
-    @Override
-    public List<Entregable> buscar(String texto) {
-        return StringUtils.hasText(texto) ? repository.findByNombreContainingIgnoreCase(texto) : repository.findAll();
-    }
-
-
+  @Override
+  public List<Entregable> buscar(String texto) {
+    return StringUtils.hasText(texto)
+        ? repository.findByNombreContainingIgnoreCase(texto)
+        : repository.findAll();
+  }
 }

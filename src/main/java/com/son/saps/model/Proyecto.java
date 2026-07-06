@@ -1,6 +1,6 @@
 package com.son.saps.model;
 
-        import com.son.saps.model.enums.EstadoProyecto;
+import com.son.saps.model.enums.EstadoProyecto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,195 +20,191 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
-        @Entity
+@Entity
 @Table(name = "proyectos")
-        public class Proyecto {
+public class Proyecto {
 
-            @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotBlank
-    @Column(nullable = false, length = 180)
-    private String titulo;
-    @Column(length = 2000)
-    private String descripcion;
-    @Column(length = 2000)
-    private String problemaIdentificado;
-    @Column(length = 1000)
-    private String objetivoGeneral;
-    @Column(length = 2000)
-    private String objetivosEspecificos;
-    @Column(length = 120)
-    private String lineaTematica;
-    @NotNull
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "curso_id")
-    private Curso curso;
-    @NotNull
-    @OneToOne(optional = false)
-    @JoinColumn(name = "grupo_id", unique = true)
-    private Grupo grupo;
-    @NotNull
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "docente_id")
-    private Docente docenteAsesor;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate fechaInicio;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate fechaEstimadaEntrega;
-    @Enumerated(EnumType.STRING)
-    private EstadoProyecto estado = EstadoProyecto.PROPUESTO;
-    @OneToMany(mappedBy = "proyecto")
-    private List<Entregable> entregables = new ArrayList<>();
-    @OneToMany(mappedBy = "proyecto")
-    private List<Observacion> observaciones = new ArrayList<>();
-    @OneToMany(mappedBy = "proyecto")
-    private List<Calificacion> calificaciones = new ArrayList<>();
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
+  @NotBlank
+  @Column(nullable = false, length = 180)
+  private String titulo;
 
+  @Column(length = 2000)
+  private String descripcion;
 
+  @Column(length = 2000)
+  private String problemaIdentificado;
 
-    public Long getId() {
-        return id;
-    }
+  @Column(length = 1000)
+  private String objetivoGeneral;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @Column(length = 2000)
+  private String objetivosEspecificos;
 
+  @Column(length = 120)
+  private String lineaTematica;
 
-    public String getTitulo() {
-        return titulo;
-    }
+  @NotNull
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "curso_id")
+  private Curso curso;
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+  @NotNull
+  @OneToOne(optional = false)
+  @JoinColumn(name = "grupo_id", unique = true)
+  private Grupo grupo;
 
+  @NotNull
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "docente_id")
+  private Docente docenteAsesor;
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private LocalDate fechaInicio;
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+  @DateTimeFormat(pattern = "yyyy-MM-dd")
+  private LocalDate fechaEstimadaEntrega;
 
+  @Enumerated(EnumType.STRING)
+  private EstadoProyecto estado = EstadoProyecto.PROPUESTO;
 
-    public String getProblemaIdentificado() {
-        return problemaIdentificado;
-    }
+  @OneToMany(mappedBy = "proyecto")
+  private List<Entregable> entregables = new ArrayList<>();
 
-    public void setProblemaIdentificado(String problemaIdentificado) {
-        this.problemaIdentificado = problemaIdentificado;
-    }
+  @OneToMany(mappedBy = "proyecto")
+  private List<Observacion> observaciones = new ArrayList<>();
 
+  @OneToMany(mappedBy = "proyecto")
+  private List<Calificacion> calificaciones = new ArrayList<>();
 
-    public String getObjetivoGeneral() {
-        return objetivoGeneral;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public void setObjetivoGeneral(String objetivoGeneral) {
-        this.objetivoGeneral = objetivoGeneral;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
+  public String getTitulo() {
+    return titulo;
+  }
 
-    public String getObjetivosEspecificos() {
-        return objetivosEspecificos;
-    }
+  public void setTitulo(String titulo) {
+    this.titulo = titulo;
+  }
 
-    public void setObjetivosEspecificos(String objetivosEspecificos) {
-        this.objetivosEspecificos = objetivosEspecificos;
-    }
+  public String getDescripcion() {
+    return descripcion;
+  }
 
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
-    public String getLineaTematica() {
-        return lineaTematica;
-    }
+  public String getProblemaIdentificado() {
+    return problemaIdentificado;
+  }
 
-    public void setLineaTematica(String lineaTematica) {
-        this.lineaTematica = lineaTematica;
-    }
+  public void setProblemaIdentificado(String problemaIdentificado) {
+    this.problemaIdentificado = problemaIdentificado;
+  }
 
+  public String getObjetivoGeneral() {
+    return objetivoGeneral;
+  }
 
-    public Curso getCurso() {
-        return curso;
-    }
+  public void setObjetivoGeneral(String objetivoGeneral) {
+    this.objetivoGeneral = objetivoGeneral;
+  }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
+  public String getObjetivosEspecificos() {
+    return objetivosEspecificos;
+  }
 
+  public void setObjetivosEspecificos(String objetivosEspecificos) {
+    this.objetivosEspecificos = objetivosEspecificos;
+  }
 
-    public Grupo getGrupo() {
-        return grupo;
-    }
+  public String getLineaTematica() {
+    return lineaTematica;
+  }
 
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
-    }
+  public void setLineaTematica(String lineaTematica) {
+    this.lineaTematica = lineaTematica;
+  }
 
+  public Curso getCurso() {
+    return curso;
+  }
 
-    public Docente getDocenteAsesor() {
-        return docenteAsesor;
-    }
+  public void setCurso(Curso curso) {
+    this.curso = curso;
+  }
 
-    public void setDocenteAsesor(Docente docenteAsesor) {
-        this.docenteAsesor = docenteAsesor;
-    }
+  public Grupo getGrupo() {
+    return grupo;
+  }
 
+  public void setGrupo(Grupo grupo) {
+    this.grupo = grupo;
+  }
 
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
-    }
+  public Docente getDocenteAsesor() {
+    return docenteAsesor;
+  }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
+  public void setDocenteAsesor(Docente docenteAsesor) {
+    this.docenteAsesor = docenteAsesor;
+  }
 
+  public LocalDate getFechaInicio() {
+    return fechaInicio;
+  }
 
-    public LocalDate getFechaEstimadaEntrega() {
-        return fechaEstimadaEntrega;
-    }
+  public void setFechaInicio(LocalDate fechaInicio) {
+    this.fechaInicio = fechaInicio;
+  }
 
-    public void setFechaEstimadaEntrega(LocalDate fechaEstimadaEntrega) {
-        this.fechaEstimadaEntrega = fechaEstimadaEntrega;
-    }
+  public LocalDate getFechaEstimadaEntrega() {
+    return fechaEstimadaEntrega;
+  }
 
+  public void setFechaEstimadaEntrega(LocalDate fechaEstimadaEntrega) {
+    this.fechaEstimadaEntrega = fechaEstimadaEntrega;
+  }
 
-    public EstadoProyecto getEstado() {
-        return estado;
-    }
+  public EstadoProyecto getEstado() {
+    return estado;
+  }
 
-    public void setEstado(EstadoProyecto estado) {
-        this.estado = estado;
-    }
+  public void setEstado(EstadoProyecto estado) {
+    this.estado = estado;
+  }
 
+  public List<Entregable> getEntregables() {
+    return entregables;
+  }
 
-    public List<Entregable> getEntregables() {
-        return entregables;
-    }
+  public void setEntregables(List<Entregable> entregables) {
+    this.entregables = entregables;
+  }
 
-    public void setEntregables(List<Entregable> entregables) {
-        this.entregables = entregables;
-    }
+  public List<Observacion> getObservaciones() {
+    return observaciones;
+  }
 
+  public void setObservaciones(List<Observacion> observaciones) {
+    this.observaciones = observaciones;
+  }
 
-    public List<Observacion> getObservaciones() {
-        return observaciones;
-    }
+  public List<Calificacion> getCalificaciones() {
+    return calificaciones;
+  }
 
-    public void setObservaciones(List<Observacion> observaciones) {
-        this.observaciones = observaciones;
-    }
-
-
-    public List<Calificacion> getCalificaciones() {
-        return calificaciones;
-    }
-
-    public void setCalificaciones(List<Calificacion> calificaciones) {
-        this.calificaciones = calificaciones;
-    }
-
-        }
+  public void setCalificaciones(List<Calificacion> calificaciones) {
+    this.calificaciones = calificaciones;
+  }
+}
