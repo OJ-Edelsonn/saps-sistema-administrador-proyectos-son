@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <actionName>run</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.codehaus.mojo:exec-maven-plugin:3.5.1:exec</goal>
+        </goals>
+        <properties>
+            <exec.vmArgs></exec.vmArgs>
+            <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+            <exec.appArgs></exec.appArgs>
+            <exec.mainClass>com.son.saps.SapsApplication</exec.mainClass>
+            <exec.executable>C:/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe</exec.executable>
+            <exec.classpathScope>runtime</exec.classpathScope>
+        </properties>
+    </action>
+    <action>
+        <actionName>run.single.main</actionName>
+        <packagings>
+            <packaging>*</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.codehaus.mojo:exec-maven-plugin:3.5.1:exec</goal>
+        </goals>
+        <properties>
+            <exec.vmArgs></exec.vmArgs>
+            <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+            <exec.appArgs></exec.appArgs>
+            <exec.mainClass>com.son.saps.SapsApplication</exec.mainClass>
+            <exec.executable>C:/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe</exec.executable>
+            <exec.classpathScope>runtime</exec.classpathScope>
+        </properties>
+    </action>
+</actions>

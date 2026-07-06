@@ -26,6 +26,8 @@ Aplicacion web academica desarrollada con Java 17, Spring Boot 3, Spring MVC, Th
 
 Cuando ejecutes el proyecto desde NetBeans, la pestaña `Run (SapsApplication)` no se cierra sola porque Spring Boot levanta un servidor web permanente. Eso es normal.
 
+Este proyecto incluye `nbactions.xml` para que S.A.P.S se ejecute con JDK 17 desde NetBeans sin cambiar el JDK global del IDE ni afectar otros proyectos.
+
 El sistema ya esta listo cuando en la consola aparezca:
 
 ```text
